@@ -10,6 +10,7 @@ export function OutputHTMLParser(inputHtmlFromQuillPopup: string): string {
       FixTagSpaceCloseTag,
       PreserveNewlinesBr,
       PreserveNewlinesPTags,
+      PreserveNewlinesPWithClass,
     ],
     inputHtmlFromQuillPopup
   );
@@ -25,6 +26,10 @@ export function PreserveNewlinesBr(input: string): string {
 
 export function PreserveNewlinesPTags(input: string): string {
   return input.replace(/<p><\/p>/g, "<p> </p>");
+}
+
+export function PreserveNewlinesPWithClass(input: string): string {
+  return input.replace(/(<p[\w=\-\."'\s]*>)(\n|\s)?<\/p>/g, "<p> </p>");
 }
 
 export function FixTagSpaceOpenTag(input: string): string {
